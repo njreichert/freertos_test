@@ -33,9 +33,17 @@ project(freertos_test C CXX ASM)
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
-# Add executable. Default name is the project name, version 0.1
+set(SRC_DIR "${CMAKE_SOURCE_DIR}/src")
+set(INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include")
 
-add_executable(freertos_test main.c )
+# Initialize FreeRTOS Stuff.
+set(FREERTOS_KERNEL_PATH "${CMAKE_SOURCE_DIR}/FreeRTOS-Kernel")
+include(${FREERTOS_KERNEL_PATH}/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.cmake)
+
+# Add executable. Default name is the project name, version 0.1
+add_executable(freertos_test
+    ${SRC_DIR}/main.c
+)
 
 pico_set_program_name(freertos_test "freertos_test")
 pico_set_program_version(freertos_test "0.1")
@@ -46,11 +54,14 @@ pico_enable_stdio_usb(freertos_test 0)
 
 # Add the standard library to the build
 target_link_libraries(freertos_test
-        pico_stdlib)
+        FreeRTOS-Kernel
+        FreeRTOS-Kernel-Heap4
+        pico_stdlib
+)
 
 # Add the standard include files to the build
 target_include_directories(freertos_test PRIVATE
-  ${CMAKE_CURRENT_LIST_DIR}
+    ${INCLUDE_DIR}
 )
 
 # Add any user requested libraries
