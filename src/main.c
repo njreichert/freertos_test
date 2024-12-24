@@ -26,9 +26,15 @@ void main_task(void *args)
     }
 }
 
+#include "portmacro.h"
+
 int main()
 {
     stdio_init_all();
+
+#if configNUMBER_OF_CORES > 1
+        printf("Starting FreeRTOS on both cores...\n");
+#endif
 
     uint32_t delay_1 = 1000;
     uint32_t delay_2 = 2000;

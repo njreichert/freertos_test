@@ -41,7 +41,13 @@
         "compare": "cpp",
         "stdlib.h": "c",
         "gpio.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "portmacro.h": "c",
+        "task.h": "c",
+        "pico.h": "c",
+        "time.h": "c",
+        "uart.h": "c"
     },
-    "cortex-debug.variableUseNaturalFormat": true
+    "cortex-debug.variableUseNaturalFormat": true,
+    "C_Cpp.errorSquiggles": "enabled"
 }
