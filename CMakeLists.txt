@@ -38,7 +38,7 @@ set(INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include")
 
 # Initialize FreeRTOS Stuff.
 set(FREERTOS_KERNEL_PATH "${CMAKE_SOURCE_DIR}/FreeRTOS-Kernel")
-include(${FREERTOS_KERNEL_PATH}/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.cmake)
+include(${FREERTOS_KERNEL_PATH}/portable/ThirdParty/GCC/RP2350_ARM_NTZ/FreeRTOS_Kernel_import.cmake)
 
 # Add executable. Default name is the project name, version 0.1
 add_executable(freertos_test
