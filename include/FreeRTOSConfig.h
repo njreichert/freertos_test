@@ -100,8 +100,13 @@
 #define configUSE_TRACE_FACILITY                1
 #define configUSE_STATS_FORMATTING_FUNCTIONS    0
 
+extern void configure_timer_for_stats(void);
 #define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS configure_timer_for_stats
+
+/* This can only be uint32_t. */
+extern uint32_t get_timer_val(void);
 #define portGET_RUN_TIME_COUNTER_VALUE get_timer_val
+
 #define configRECORD_STACK_HIGH_ADDRESS 1
 
 /* Co-routine related definitions. */
